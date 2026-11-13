@@ -1,0 +1,76 @@
+[
+  {
+    "id": "port-events",
+    "name": "Events",
+    "code": "EVT-01",
+    "status": "active",
+    "description": "Flagship chapter symposiums, PMI partner associations, industry webinars, and annual conferences.",
+    "leadPersonName": "Sivakumar G",
+    "updatedAt": "2026-11-12T11:07:07.183Z"
+  },
+  {
+    "id": "port-marcom",
+    "name": "Marcom",
+    "code": "MCM-02",
+    "status": "active",
+    "description": "Chapter communications, newsletters, social media marketing, official notices, and branding.",
+    "leadPersonName": "Vinay Babu Tarala",
+    "updatedAt": "2026-11-08T11:14:03.416Z"
+  },
+  {
+    "id": "port-social-impact",
+    "name": "Social Impact",
+    "code": "SOC-03",
+    "status": "active",
+    "description": "Social impact initiatives, youth development, sustainability projects, and community outreach.",
+    "leadPersonName": "Lata Kalla"
+  },
+  {
+    "id": "port-academia",
+    "name": "Academia",
+    "code": "ACD-04",
+    "status": "active",
+    "description": "University partnerships, student outreach, academic symposiums, and student chapter branches.",
+    "leadPersonName": "Dr. B. Rao"
+  },
+  {
+    "id": "port-academy",
+    "name": "Academy",
+    "code": "ACM-05",
+    "status": "active",
+    "description": "PMP/CAPM certifications training, agile workshops, continuous education units (PDUs), and masterclasses.",
+    "leadPersonName": "Sreevani Lakkaraju"
+  },
+  {
+    "id": "port-corporate",
+    "name": "Corporate",
+    "code": "CRP-06",
+    "status": "active",
+    "description": "Enterprise sponsorship, corporate tie-ups, B2B relations, and leadership roundtables in Hyderabad tech hub.",
+    "leadPersonName": "Seshu Ganti"
+  },
+  {
+    "id": "port-volunteers",
+    "name": "Volunteers",
+    "code": "VOL-07",
+    "status": "active",
+    "description": "Volunteer recruitment, onboarding, engagement drives, recognition programs, and committee support.",
+    "leadPersonName": "Krishna Chaitanya"
+  },
+  {
+    "id": "port-membership",
+    "name": "Membership",
+    "code": "MBR-08",
+    "status": "active",
+    "description": "Member onboarding, retention drives, chapter engagement forums, and member support services.",
+    "leadPersonName": "Suresh Addepalli"
+  },
+  {
+    "id": "port-vizag",
+    "name": "Vizag",
+    "code": "VZG-09",
+    "status": "active",
+    "description": "Vizag branch activities, coastal Andhra outreach, regional networking forums, and local chapter events.",
+    "leadPersonName": "Manohar Yerraguntla"
+  }
+]

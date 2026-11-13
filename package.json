@@ -1,0 +1,21 @@
+{
+  "name": "pmipcc-portfolio-resource-allocation-system",
+  "version": "2.0.0",
+  "description": "PMI Pearl City Chapter (PMIPCC) - Portfolio Resource Allocation System with Board Leadership, Past 3 Months Auto-Selection, and Reports Downloads",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node server.js"
+  },
+  "keywords": [
+    "pmipcc",
+    "pmi",
+    "portfolio-management",
+    "board-leadership",
+    "resource-allocation",
+    "quarterly-reports"
+  ],
+  "author": "PMI Pearl City Chapter Hyderabad",
+  "license": "MIT"
+}
+

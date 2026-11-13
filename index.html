@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMI Pearl City Chapter (PMIPCC) | Portfolio Resource Allocation System</title>
+  <meta name="description" content="PMI Pearl City Chapter Hyderabad - Portfolio Resource Allocation, Multi-Person Quarterly Tracking, and Reporting System.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="shortcut icon" href="assets/favicon.png">
+  <!-- Official PMIPCC Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=3.1">
+</head>
+<body>
+
+  <!-- Top Sticky Navigation & Official PMIPCC Brand Header -->
+  <header class="app-header">
+    <div class="brand-ribbon" aria-hidden="true"></div>
+    <div class="header-container">
+      <a href="index.html" class="brand-wrapper" id="brand-home-link" title="PMI Pearl City Chapter Hyderabad" aria-label="PMI Pearl City Chapter Hyderabad">
+        <img src="assets/pmi-logo-color.svg" alt="PMI Pearl City Chapter Hyderabad" class="brand-logo" width="220" height="62">
+        <div class="brand-badge-box">
+          <span class="brand-subtext">Resource Allocation System</span>
+          <span class="brand-badge">Official Chapter Portal</span>
+        </div>
+      </a>
+
+      <!-- Portal Tabs Navigation & Top Admin Actions -->
+      <div class="header-nav-group">
+        <nav class="pmipcc-nav-tabs" aria-label="Main Navigation">
+          <button type="button" class="pmipcc-tab-btn active" data-target="form">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+            <span>Resource Form</span>
+          </button>
+
+          <button type="button" class="pmipcc-tab-btn" data-target="admin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>Admin Panel</span>
+          </button>
+        </nav>
+
+        <!-- Top Header Logout Button (visible when logged in) -->
+        <button type="button" id="btn-top-admin-logout" class="btn btn-secondary btn-compact" style="display: none; height: 32px; padding: 0.25rem 0.65rem; font-size: 0.75rem; font-weight: 700; border-radius: var(--radius-sm);" title="Sign out of Admin Panel">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- ========================================================
+         VIEW 1: RESOURCE ALLOCATION FORM (CORE USER REQUIREMENTS)
+         ======================================================== -->
+    <section id="view-form">
+      <div class="form-card">
+        
+        <!-- Form Header (Clean, Corporate & Clutter-Free) -->
+        <div class="form-header">
+          <h1 id="formTitle">Portfolio Resource Allocation Form</h1>
+          <p class="form-header-desc">
+            Select a designated chapter <b>Portfolio</b> (Events, Marcom, Social Impact, Academia, Academy, Corporate, Volunteers, Membership, Vizag) and choose one or more <b>Persons</b>. For each person, select the <b>Month</b> and enter their allocated <b>Hours</b> and <b>Deliverables / Comments</b>.
+          </p>
+        </div>
+
+        <form id="timesheet-form" class="form-body" novalidate>
+
+          <!-- SECTION 1: PORTFOLIO & PERSON SELECTION -->
+          <fieldset class="form-section">
+            <legend class="form-section-legend">
+              <span class="legend-badge">1</span>
+              <span>Section 1: Portfolio &amp; Person Selection</span>
+            </legend>
+
+            <!-- 1. Portfolio Selection Dropdown -->
+            <div class="form-group full-span" id="group-portfolio-select" style="margin-bottom: 1.25rem;">
+              <label class="form-label" for="portfolio-select-dropdown" style="font-size: 0.9rem;">
+                <span>Chapter Portfolio <span class="required-star">*</span></span>
+              </label>
+              <div class="portfolio-dropdown-box">
+                <select class="form-select" id="portfolio-select-dropdown" required aria-describedby="portfolio-select-hint">
+                  <option value="" selected>-- Select Chapter Portfolio --</option>
+                </select>
+              </div>
+              <span class="input-hint" id="portfolio-select-hint">
+                Select the chapter portfolio (Events, Marcom, Social Impact, Academia, Academy, Corporate, Volunteers, Membership, Vizag) for resource allocation.
+              </span>
+            </div>
+
+            <!-- 2. Person: Dropdown (Select persons in the dropdown only) -->
+            <div class="form-group full-span" id="group-person-select">
+              <div class="person-select-header-bar">
+                <label class="form-label" for="person-select-dropdown" style="margin-bottom: 0; font-size: 0.9rem;">
+                  <span>Person (Select from Dropdown) <span class="required-star">*</span></span>
+                </label>
+                <div class="person-select-actions-bar">
+                  <span id="person-count-badge" class="status-pill active">0 Selected</span>
+                  <span class="action-pipe" style="color: var(--border-medium);">|</span>
+                  <button type="button" id="btn-select-all-people" style="background: none; border: none; color: var(--pmi-blue); font-weight: 700; cursor: pointer;">
+                    Select All Active Persons
+                  </button>
+                  <span class="action-pipe" style="color: var(--border-medium);">|</span>
+                  <button type="button" id="btn-clear-people" style="background: none; border: none; color: var(--text-muted); cursor: pointer;">
+                    Clear Selection
+                  </button>
+                </div>
+              </div>
+
+              <div class="person-dropdown-box">
+                <select class="form-select" id="person-select-dropdown" aria-describedby="person-select-hint">
+                  <option value="">-- Select a Person from Dropdown to Add --</option>
+                </select>
+              </div>
+              <span class="input-hint" id="person-select-hint">
+                Select any chapter person from the dropdown to add them as Person 1, Person 2, Person 3...
+              </span>
+            </div>
+
+            <!-- Selected Persons Chips / Tags Container -->
+            <div style="margin-top: 1rem;">
+              <div style="margin-bottom: 0.35rem;">
+                <span style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.05em;">
+                  Selected Persons to Allocate:
+                </span>
+              </div>
+              <div class="selected-persons-tags-container" id="selected-people-chips">
+                <!-- Rendered dynamically via FormController -->
+              </div>
+            </div>
+
+          </fieldset>
+
+          <!-- SECTION 2: MONTHLY RESOURCE ALLOCATION & DELIVERABLES -->
+          <fieldset class="form-section">
+            <legend class="form-section-legend">
+              <span class="legend-badge">2</span>
+              <span>Section 2: Monthly Resource Allocation &amp; Deliverables</span>
+            </legend>
+
+            <!-- Empty State when no person selected -->
+            <div id="form-empty-people" style="text-align: center; padding: 3rem 1.5rem; border: 2px dashed var(--border-medium); border-radius: var(--radius-lg); background: #ffffff;">
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="var(--pmi-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 0.75rem;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              <h3 style="font-weight: 800; color: var(--pmi-dark); margin: 0 0 0.35rem;">No Persons Selected</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); max-width: 440px; margin: 0 auto;">
+                Please select a <b>Portfolio</b> and one or more persons from the <b>Person Dropdown</b> above. For each person, choose the <b>Month</b> and enter their allocated <b>Hours</b> and <b>Deliverables / Comments</b>.
+              </p>
+            </div>
+
+            <!-- Dynamic Person Cards Container (Person 1, Person 2, Person 3...) -->
+            <div id="people-cards-container">
+              <!-- Dynamically populated via FormController.renderPersonCards() -->
+            </div>
+
+          </fieldset>
+
+          <!-- STICKY ACTION BAR -->
+          <div class="sticky-summary-bar">
+            <div class="summary-metrics-group">
+              <div class="summary-metric-item">
+                <span class="summary-metric-label">Persons Selected</span>
+                <span class="summary-metric-val" id="summary-person-count">0</span>
+              </div>
+              <div class="summary-metric-item" style="border-left: 1px solid var(--border-medium); padding-left: 1.5rem;">
+                <span class="summary-metric-label">Months Logged</span>
+                <span class="summary-metric-val" id="summary-month-count">0</span>
+              </div>
+            </div>
+
+            <div class="sticky-summary-actions">
+              <button type="button" id="btn-reset-form" class="btn btn-secondary">
+                Reset Form
+              </button>
+              <button type="submit" class="btn btn-primary" style="font-weight: 800; background: var(--pmi-orange); border-color: var(--pmi-orange);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.35rem;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Submit &amp; Save Allocations</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         VIEW 2: ADMIN PANEL (HOUSES REPORTS & DOWNLOADS + PORTFOLIOS & PERSONS)
+         ======================================================== -->
+    <section id="view-admin" style="display: none;">
+
+      <!-- 1. ADMIN AUTHENTICATION CARD (WHEN LOGGED OUT) -->
+      <div id="admin-login-view" style="display: none;">
+        <div class="auth-login-card">
+          <div class="auth-brand-ribbon"></div>
+          <div class="auth-card-body">
+            
+            <div style="text-align: center; margin-bottom: 1.25rem;">
+              <div style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(0, 51, 102, 0.06); color: var(--pmi-dark); margin-bottom: 0.6rem;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <div style="font-size: 0.725rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pmi-orange); margin-bottom: 0.2rem;">
+                PMI Pearl City Chapter
+              </div>
+              <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--pmi-dark); margin: 0 0 0.25rem;">Chapter Admin Login</h2>
+              <p style="font-size: 0.775rem; color: var(--text-muted); margin: 0; line-height: 1.4;">
+                Enter administrator credentials to access executive reports &amp; chapter governance.
+              </p>
+            </div>
+
+            <form id="admin-login-form" novalidate>
+              <!-- Error Alert Banner -->
+              <div id="admin-login-error" style="display: none; background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; padding: 0.6rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.775rem; font-weight: 600; margin-bottom: 1rem;">
+              </div>
+
+              <!-- Username Field -->
+              <div class="form-group" style="margin-bottom: 0.9rem;">
+                <label class="form-label" for="admin-username" style="font-size: 0.775rem;">
+                  <span>Username / Chapter ID <span class="required-star">*</span></span>
+                </label>
+                <input type="text" id="admin-username" class="form-control" placeholder="e.g. admin" required autocomplete="username" style="font-size: 0.85rem; padding: 0.55rem 0.75rem;">
+              </div>
+
+              <!-- Password Field -->
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                  <label class="form-label" for="admin-password" style="font-size: 0.775rem; margin-bottom: 0;">
+                    <span>Password <span class="required-star">*</span></span>
+                  </label>
+                  <button type="button" id="btn-toggle-admin-password" style="background: none; border: none; font-size: 0.725rem; color: var(--pmi-blue); font-weight: 700; cursor: pointer; padding: 0;">
+                    Show Password
+                  </button>
+                </div>
+                <input type="password" id="admin-password" class="form-control" placeholder="••••••••" required autocomplete="current-password" style="font-size: 0.85rem; padding: 0.55rem 0.75rem;">
+              </div>
+
+              <!-- Remember Device Checkbox -->
+              <div style="margin-bottom: 1.25rem; font-size: 0.775rem;">
+                <label style="display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer; color: var(--text-secondary);">
+                  <input type="checkbox" id="admin-remember-me" checked style="accent-color: var(--pmi-blue);">
+                  <span>Keep me signed in on this device</span>
+                </label>
+              </div>
+
+              <!-- Submit Login Button -->
+              <button type="submit" id="btn-admin-submit-login" class="btn-login-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+                <span>Login to Admin Panel</span>
+              </button>
+
+              <!-- Enterprise Credentials Helper -->
+              <div style="margin-top: 1.25rem; padding: 0.75rem 0.85rem; background: var(--surface-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.725rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                  <span style="font-weight: 700; color: var(--pmi-dark);">Default Admin Access:</span>
+                  <button type="button" id="btn-autofill-admin-creds" style="background: #ffffff; border: 1px solid var(--border-medium); border-radius: 3px; padding: 0.15rem 0.45rem; font-size: 0.7rem; font-weight: 700; color: var(--pmi-blue); cursor: pointer;">
+                    Auto-Fill
+                  </button>
+                </div>
+                <div style="color: var(--text-muted); display: flex; gap: 0.75rem;">
+                  <span>User: <code style="font-weight: 700; color: var(--pmi-dark);">admin</code></span>
+                  <span>Pass: <code style="font-weight: 700; color: var(--pmi-dark);">admin123</code></span>
+                </div>
+              </div>
+
+              <div style="text-align: center; margin-top: 1rem;">
+                <button type="button" id="btn-admin-back-to-form" style="background: none; border: none; color: var(--text-muted); font-size: 0.75rem; cursor: pointer; text-decoration: underline;">
+                  &larr; Return to Resource Allocation Form
+                </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. ADMIN AUTHENTICATED CONTENT (REPORTS + PORTFOLIOS) -->
+      <div id="admin-content-view" style="display: none;">
+
+        <!-- Top Sub-Navigation Toolbar -->
+        <div class="admin-subnav-toolbar">
+          <div class="pmipcc-nav-tabs admin-subtabs-nav">
+            <button type="button" class="pmipcc-tab-btn active" id="admin-subtab-reports" data-admin-target="reports">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+              <span>Reports &amp; Downloads</span>
+            </button>
+            <button type="button" class="pmipcc-tab-btn" id="admin-subtab-manage" data-admin-target="manage">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span>Portfolios &amp; Persons</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- SUB-PANE 1: REPORTS & DOWNLOADS -->
+        <div id="admin-pane-reports" class="admin-subpane" style="display: block;">
+        <!-- Printable Header for PDF/Print -->
+        <div class="pmipcc-print-header" style="display: none;">
+          <img src="assets/pmi-logo-color.svg" alt="PMI Pearl City Chapter" width="200" height="56">
+          <h2 style="font-size: 16pt; font-weight: bold; margin: 0.5rem 0 0.2rem; color: #003366;">PMI PEARL CITY CHAPTER HYDERABAD</h2>
+          <p style="font-size: 10pt; color: #555555; margin: 0;">Portfolio Resource Allocation &amp; Quarterly Work Report</p>
+          <p id="print-year-subtitle" style="font-size: 9.5pt; font-weight: bold; color: #ff610f; margin: 0.35rem 0 0;">Report Scope: All Years</p>
+        </div>
+
+        <div class="form-card">
+          
+          <div class="form-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; padding: 1rem 1.25rem;">
+            <div>
+              <span class="form-header-badge" style="font-size: 0.7rem; padding: 0.15rem 0.5rem;">PMIPCC Executive Analytics</span>
+              <h1 style="font-size: 1.25rem; margin: 0.2rem 0 0.15rem; font-weight: 800; color: var(--pmi-dark);">Reports &amp; Downloads</h1>
+              <p class="form-header-desc" style="font-size: 0.775rem; margin: 0; color: var(--text-muted);">
+                Export quarterly resource reports across portfolios and chapter persons.
+              </p>
+            </div>
+          </div>
+
+          <div class="form-body" style="padding: 1.25rem;">
+            <!-- Reports Filter & Search Bar -->
+            <div class="mgmt-controls-bar">
+              <div class="mgmt-filters-left">
+                <div class="mgmt-filter-field">
+                  <label for="reports-portfolio-filter" style="font-size: 0.775rem; font-weight: 700; color: var(--text-secondary);">Portfolio:</label>
+                  <select id="reports-portfolio-filter" class="form-select table-filter-select">
+                    <option value="all">All Portfolios</option>
+                  </select>
+                </div>
+
+                <div class="mgmt-filter-field">
+                  <label for="reports-year-filter" style="font-size: 0.775rem; font-weight: 700; color: var(--text-secondary);">Year:</label>
+                  <select id="reports-year-filter" class="form-select table-filter-select">
+                    <option value="all">All Years</option>
+                  </select>
+                </div>
+
+                <div class="mgmt-filter-field">
+                  <label for="reports-month-filter" style="font-size: 0.775rem; font-weight: 700; color: var(--text-secondary);">Month:</label>
+                  <select id="reports-month-filter" class="form-select table-filter-select">
+                    <option value="all">All Months</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mgmt-filters-right">
+                <div class="mgmt-search-box">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  <input type="text" id="reports-search-input" class="search-input" placeholder="Search person, deliverable, year...">
+                </div>
+                <button type="button" id="btn-reports-reset-filter" class="btn-tbl-action" style="height: 34px; padding: 0 0.65rem; font-size: 0.75rem; border-color: var(--border-medium); color: var(--text-muted); display: none;" title="Reset filters">
+                  Clear
+                </button>
+              </div>
+            </div>
+
+            <!-- Reports Action Toolbar: Below Filters Bar & Above Table -->
+            <div class="reports-bottom-actions-toolbar no-print" style="margin-top: 0; margin-bottom: 0.85rem; padding: 0.65rem 0.85rem; background: var(--surface-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.65rem;">
+              <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.55rem;">
+                <div style="display: flex; align-items: center; gap: 0.35rem; margin-right: 0.2rem;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--pmi-dark);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span style="font-weight: 800; font-size: 0.8rem; color: var(--pmi-dark);">Download Records:</span>
+                </div>
+
+                <button type="button" id="btn-download-excel" class="btn-compact btn-excel" title="Download formatted Excel spreadsheet for selected year and filters">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  <span>Download Excel (.xlsx)</span>
+                </button>
+
+                <button type="button" id="btn-download-csv" class="btn-compact btn-csv" title="Download raw CSV dataset for selected year and filters">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>Download CSV</span>
+                </button>
+
+                <button type="button" id="btn-download-pdf" class="btn-compact btn-outline" title="Print or save as PDF for selected year and filters">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                  <span>Print / Save PDF</span>
+                </button>
+              </div>
+
+              <!-- Backup & Restore Actions -->
+              <div style="display: flex; align-items: center; gap: 0.45rem;">
+                <button type="button" id="btn-export-json" class="btn-compact btn-outline" title="Export complete JSON backup">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  <span>Backup JSON</span>
+                </button>
+
+                <label class="btn-compact btn-outline" style="cursor: pointer; margin-bottom: 0;" title="Import JSON backup">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  <span>Import JSON</span>
+                  <input type="file" id="import-json-file" accept=".json" style="display: none;">
+                </label>
+              </div>
+            </div>
+
+            <!-- Detailed Data Table -->
+            <div class="pmipcc-table-wrapper">
+              <div style="padding: 0.75rem 1rem; border-bottom: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; background: var(--surface-subtle); flex-wrap: wrap; gap: 0.45rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                  <span style="font-weight: 800; font-size: 0.85rem; color: var(--pmi-dark);">
+                    Detailed Allocation Register
+                  </span>
+                  <span id="report-count-badge" class="status-pill active" style="font-size: 0.725rem;">0 allocations</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.65rem;">
+                  <span class="mobile-table-hint">⇄ Swipe horizontally</span>
+                  <div id="reports-filter-indicator" style="font-size: 0.75rem; color: var(--text-muted);"></div>
+                </div>
+              </div>
+
+              <table class="pmipcc-table">
+                <thead>
+                  <tr>
+                    <th class="sortable-th" data-sort="submittedAt" style="cursor: pointer; width: 105px;">Date ⇅</th>
+                    <th class="sortable-th" data-sort="year" style="cursor: pointer; width: 85px;">Year ⇅</th>
+                    <th class="sortable-th" data-sort="portfolioName" style="cursor: pointer; width: 170px;">Portfolio ⇅</th>
+                    <th class="sortable-th" data-sort="personName" style="cursor: pointer; width: 185px;">Person ⇅</th>
+                    <th class="sortable-th" data-sort="month" style="cursor: pointer; width: 110px;">Month ⇅</th>
+                    <th class="sortable-th" data-sort="hours" style="cursor: pointer; width: 95px;">Hours ⇅</th>
+                    <th>Comments / Chapter Deliverables</th>
+                    <th style="text-align: right; width: 135px;" class="no-print">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="reports-table-body">
+                  <!-- Populated via ReportsController -->
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SUB-PANE 2: PORTFOLIOS & PERSONS MANAGEMENT -->
+      <div id="admin-pane-manage" class="admin-subpane" style="display: none;">
+        <div class="form-card">
+          
+          <div class="form-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1.1rem 1.25rem;">
+            <div>
+              <span class="form-header-badge" style="font-size: 0.7rem; padding: 0.15rem 0.5rem;">PMIPCC Chapter Governance</span>
+              <h1 style="font-size: 1.3rem; margin: 0.2rem 0 0.15rem; font-weight: 800; color: var(--pmi-dark);">Portfolios &amp; Persons Directory</h1>
+              <p class="form-header-desc" style="font-size: 0.775rem; margin: 0; color: var(--text-muted);">
+                Configure chapter portfolios, assign designated persons, and manage active status for resource allocation.
+              </p>
+            </div>
+          </div>
+
+          <div class="form-body" style="padding: 1.25rem;">
+            <!-- Live Executive Stats Grid -->
+            <div id="manage-stats-summary"></div>
+
+            <!-- View Selector Tabs: Portfolios Table vs Person Table -->
+            <div class="mgmt-tabs-nav-bar">
+              <div class="mgmt-tabs-pill-group">
+                <button type="button" id="tab-manage-portfolios" class="mgmt-tab-pill active">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>1. Portfolios Directory</span>
+                </button>
+                <button type="button" id="tab-manage-people" class="mgmt-tab-pill">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  <span>2. Persons Table</span>
+                  <span class="mgmt-tab-badge">(Edit, Status, Delete)</span>
+                </button>
+              </div>
+              <div class="mgmt-view-hint" style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">
+                Add Persons to Each Portfolio &bull; Manage Status, Edit, and Delete
+              </div>
+            </div>
+
+            <!-- 1. PORTFOLIOS TABLE VIEW -->
+            <div id="manage-portfolios-view">
+              <div class="mgmt-controls-bar">
+                <div class="mgmt-filters-left">
+                  <div class="mgmt-filter-field">
+                    <label for="portfolio-status-filter" style="font-size: 0.775rem; font-weight: 700; color: var(--text-secondary);">Status Filter:</label>
+                    <select id="portfolio-status-filter" class="form-select table-filter-select">
+                      <option value="all">All Portfolios</option>
+                      <option value="active">Active Only</option>
+                      <option value="inactive">Inactive Only</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mgmt-filters-right">
+                  <div class="mgmt-search-box">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="portfolio-search-input" class="search-input" placeholder="Search code, name, person...">
+                  </div>
+                  <button type="button" id="btn-add-portfolio" class="btn-add-portfolio-primary" title="Add a new chapter portfolio">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <span>Add Portfolio</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="pmipcc-table-wrapper">
+                <div class="mobile-table-hint-bar" style="padding: 0.5rem 0.85rem; border-bottom: 1px solid var(--border-light); background: var(--surface-subtle); display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 700; font-size: 0.775rem; color: var(--pmi-dark);">Portfolios Directory</span>
+                  <span class="mobile-table-hint">⇄ Swipe horizontally</span>
+                </div>
+                <table class="pmipcc-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 80px;">Code</th>
+                      <th style="width: 280px; max-width: 320px;">Portfolio Name &amp; Description</th>
+                      <th style="width: 210px;">Designated Person / Mapping</th>
+                      <th style="width: 145px; min-width: 145px;">Status</th>
+                      <th style="width: 120px;">Registered</th>
+                      <th style="text-align: right; width: 170px;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="portfolios-table-body">
+                    <!-- Populated via ManagementController -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- 2. PERSONS TABLE VIEW (Add Persons to each portfolio with Edit, Status, Delete) -->
+            <div id="manage-people-view" style="display: none;">
+              <div class="mgmt-controls-bar">
+                <div class="mgmt-filters-left">
+                  <div class="mgmt-filter-field">
+                    <label for="people-portfolio-filter" style="font-size: 0.775rem; font-weight: 700; color: var(--text-secondary);">Filter by Portfolio:</label>
+                    <select id="people-portfolio-filter" class="form-select table-filter-select">
+                      <option value="all">All Portfolios</option>
+                    </select>
+                  </div>
+                  <div class="mgmt-filter-field">
+                    <label for="people-status-filter" style="font-size: 0.775rem; font-weight: 700; color: var(--text-secondary);">Status Filter:</label>
+                    <select id="people-status-filter" class="form-select table-filter-select">
+                      <option value="all">All Statuses</option>
+                      <option value="active">Active Only</option>
+                      <option value="inactive">Inactive Only</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mgmt-filters-right">
+                  <div class="mgmt-search-box">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="people-search-input" class="search-input" placeholder="Search person name, email, role...">
+                  </div>
+                  <button type="button" id="btn-add-person" class="btn-add-portfolio-primary" title="Add a new person to a portfolio">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    <span>Add Person to Portfolio</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="pmipcc-table-wrapper">
+                <div class="mobile-table-hint-bar" style="padding: 0.5rem 0.85rem; border-bottom: 1px solid var(--border-light); background: var(--surface-subtle); display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 700; font-size: 0.775rem; color: var(--pmi-dark);">Persons Directory</span>
+                  <span class="mobile-table-hint">⇄ Swipe horizontally</span>
+                </div>
+                <table class="pmipcc-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 250px;">Person</th>
+                      <th style="width: 220px;">Assigned Portfolio</th>
+                      <th style="width: 200px;">Chapter Role</th>
+                      <th style="width: 145px; min-width: 145px;">Status</th>
+                      <th style="text-align: right; width: 170px;">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="people-table-body">
+                    <!-- Populated via ManagementController.renderPeopleTable() -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      </div> <!-- /#admin-content-view -->
+
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       MODALS & DIALOGS
+       ======================================================== -->
+
+  <!-- 1. PORTFOLIO ADD / EDIT MODAL -->
+  <div id="portfolio-modal" class="pmipcc-modal-backdrop" style="display: none;">
+    <div class="pmipcc-modal-dialog" onclick="event.stopPropagation()">
+      <div class="pmipcc-modal-header">
+        <h3 class="pmipcc-modal-title" id="portfolio-modal-title">Add Portfolio</h3>
+        <button type="button" id="btn-close-portfolio-modal" style="background: none; border: none; font-size: 1.25rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+      </div>
+      <form id="portfolio-modal-form">
+        <div class="pmipcc-modal-body">
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <label class="form-label" style="font-size: 0.75rem;">Portfolio Name <span class="required-star">*</span></label>
+            <input type="text" id="modal-port-name" required class="form-control" placeholder="e.g. Professional Associations &amp; Events">
+          </div>
+
+          <div class="modal-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label" style="font-size: 0.75rem;">Code / Prefix</label>
+              <input type="text" id="modal-port-code" class="form-control" placeholder="e.g. PAE-02">
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="font-size: 0.75rem;">Status</label>
+              <select id="modal-port-status" class="form-select">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <label class="form-label" style="font-size: 0.75rem;">Lead Person Name (From Image)</label>
+            <input type="text" id="modal-port-lead" class="form-control" placeholder="e.g. Sivakumar G">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="font-size: 0.75rem;">Description</label>
+            <textarea id="modal-port-desc" class="form-textarea" rows="2" placeholder="Key initiatives, goals..."></textarea>
+          </div>
+        </div>
+
+        <div class="pmipcc-modal-footer">
+          <button type="button" id="btn-cancel-portfolio-modal" class="btn btn-secondary" style="height: 36px; padding: 0 1rem; font-size: 0.8rem;">Cancel</button>
+          <button type="submit" class="btn btn-primary" style="height: 36px; padding: 0 1.25rem; font-size: 0.8rem; background: var(--pmi-dark); border-color: var(--pmi-dark);">Save Portfolio</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. PERSON ADD / EDIT MODAL -->
+  <div id="person-modal" class="pmipcc-modal-backdrop" style="display: none;">
+    <div class="pmipcc-modal-dialog" onclick="event.stopPropagation()">
+      <div class="pmipcc-modal-header">
+        <h3 class="pmipcc-modal-title" id="person-modal-title">Add Person</h3>
+        <button type="button" id="btn-close-person-modal" style="background: none; border: none; font-size: 1.25rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+      </div>
+      <form id="person-modal-form">
+        <div class="pmipcc-modal-body">
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <label class="form-label" style="font-size: 0.75rem;">Full Name <span class="required-star">*</span></label>
+            <input type="text" id="modal-per-name" required class="form-control" placeholder="e.g. Vinay Babu Tarala">
+          </div>
+
+          <div class="modal-grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label" style="font-size: 0.75rem;">Chapter Role</label>
+              <input type="text" id="modal-per-role" class="form-control" placeholder="e.g. General Secretary &amp; Marcom">
+            </div>
+            <div class="form-group">
+              <label class="form-label" style="font-size: 0.75rem;">Status</label>
+              <select id="modal-per-status" class="form-select">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <label class="form-label" style="font-size: 0.75rem;">Email Address</label>
+            <input type="email" id="modal-per-email" class="form-control" placeholder="person@pmi-pcc.org">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="font-size: 0.75rem;">Assigned Portfolio</label>
+            <select id="modal-per-portfolio" class="form-select"></select>
+          </div>
+        </div>
+
+        <div class="pmipcc-modal-footer">
+          <button type="button" id="btn-cancel-person-modal" class="btn btn-secondary" style="height: 36px; padding: 0 1rem; font-size: 0.8rem;">Cancel</button>
+          <button type="submit" class="btn btn-primary" style="height: 36px; padding: 0 1.25rem; font-size: 0.8rem; background: var(--pmi-dark); border-color: var(--pmi-dark);">Save Person</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. EDIT ALLOCATION MODAL -->
+  <div id="edit-log-modal" class="pmipcc-modal-backdrop" style="display: none;">
+    <div class="pmipcc-modal-dialog" style="max-width: 440px;" onclick="event.stopPropagation()">
+      <div class="pmipcc-modal-header">
+        <h3 class="pmipcc-modal-title">Edit Month Allocation</h3>
+        <button type="button" id="btn-close-edit-log-modal" style="background: none; border: none; font-size: 1.25rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+      </div>
+      <form id="edit-log-form">
+        <div class="pmipcc-modal-body">
+          <input type="hidden" id="edit-log-id">
+          <div style="background: var(--surface-subtle); padding: 0.75rem; border-radius: var(--radius-sm); border: 1px solid var(--border-light); font-size: 0.75rem; margin-bottom: 0.75rem;">
+            <div><span style="color: var(--text-muted);">Portfolio:</span> <b id="edit-log-portfolio-name" style="color: var(--pmi-dark);"></b></div>
+            <div><span style="color: var(--text-muted);">Person:</span> <b id="edit-log-person-name"></b></div>
+            <div><span style="color: var(--text-muted);">Year:</span> <b id="edit-log-year" style="color: var(--pmi-dark); margin-right: 0.65rem;"></b><span style="color: var(--text-muted);">Month:</span> <b id="edit-log-month" style="color: var(--pmi-orange);"></b></div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <label class="form-label" style="font-size: 0.75rem;">Hours Logged</label>
+            <input type="number" step="0.5" min="0" max="744" id="edit-log-hours" required class="form-control" style="font-family: var(--font-mono); font-weight: 700;">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="font-size: 0.75rem;">Comments / Deliverables</label>
+            <textarea id="edit-log-comments" class="form-textarea" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="pmipcc-modal-footer">
+          <button type="button" id="btn-cancel-edit-log-modal" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update Allocation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. SUBMISSION SUCCESS MODAL -->
+  <div id="submission-success-modal" class="pmipcc-modal-backdrop" style="display: none;">
+    <div class="pmipcc-modal-dialog" style="max-width: 460px; text-align: center; padding: 2rem 1.5rem;" onclick="event.stopPropagation()">
+      <div style="width: 52px; height: 52px; border-radius: 50%; background: #dcfce7; color: #15803d; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--pmi-dark); margin: 0 0 0.5rem;">
+        Allocations Saved Successfully!
+      </h3>
+      <p id="success-modal-desc" style="font-size: 0.8rem; color: var(--text-muted); margin: 0 0 1.5rem;">
+        Your quarterly resource allocations have been persisted to the PMIPCC database.
+      </p>
+      <div class="success-modal-actions" style="display: flex; justify-content: center; gap: 0.75rem;">
+        <button type="button" id="btn-close-success-modal" class="btn btn-secondary">
+          Enter More Records
+        </button>
+        <button type="button" id="btn-view-reports-from-modal" class="btn btn-primary" style="background: var(--pmi-orange); border-color: var(--pmi-orange);">
+          View Reports &amp; Download &rarr;
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.5rem; pointer-events: none;"></div>
+
+  <!-- Scripts -->
+  <script src="js/initialData.js?v=3.1"></script>
+  <script src="js/state.js?v=3.1"></script>
+  <script src="js/form.js?v=3.1"></script>
+  <script src="js/management.js?v=3.1"></script>
+  <script src="js/reports.js?v=3.1"></script>
+  <script src="js/app.js?v=3.1"></script>
+</body>
+</html>

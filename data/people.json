@@ -1,0 +1,408 @@
+[
+  {
+    "id": "per-evt-1",
+    "name": "Sivakumar G",
+    "role": "VP Events",
+    "email": "sivakumar.g@pmi-pcc.org",
+    "portfolioId": "port-events",
+    "status": "active",
+    "initials": "SG",
+    "updatedAt": "2026-11-12T10:47:01.211Z"
+  },
+  {
+    "id": "per-evt-2",
+    "name": "Ananya Sharma",
+    "role": "Event Operations Lead",
+    "email": "ananya.sharma@pmi-pcc.org",
+    "portfolioId": "port-events",
+    "status": "active",
+    "initials": "AS"
+  },
+  {
+    "id": "per-evt-3",
+    "name": "Rajesh Varma",
+    "role": "Symposium Program Manager",
+    "email": "rajesh.varma@pmi-pcc.org",
+    "portfolioId": "port-events",
+    "status": "active",
+    "initials": "RV"
+  },
+  {
+    "id": "per-evt-4",
+    "name": "Kavitha Reddy",
+    "role": "Webinar Coordinator",
+    "email": "kavitha.reddy@pmi-pcc.org",
+    "portfolioId": "port-events",
+    "status": "active",
+    "initials": "KR"
+  },
+  {
+    "id": "per-evt-5",
+    "name": "Karthik Nambiar",
+    "role": "Annual Conference Logistics",
+    "email": "karthik.n@pmi-pcc.org",
+    "portfolioId": "port-events",
+    "status": "active",
+    "initials": "KN"
+  },
+  {
+    "id": "per-mcm-1",
+    "name": "Vinay Babu Tarala",
+    "role": "General Secretary & Marcom Lead",
+    "email": "vinay.babu@pmi-pcc.org",
+    "portfolioId": "port-marcom",
+    "status": "active",
+    "initials": "VBT"
+  },
+  {
+    "id": "per-mcm-2",
+    "name": "Priyanka Deshmukh",
+    "role": "Digital Marketing & Social Media",
+    "email": "priyanka.d@pmi-pcc.org",
+    "portfolioId": "port-marcom",
+    "status": "active",
+    "initials": "PD"
+  },
+  {
+    "id": "per-mcm-3",
+    "name": "Rahul Vankadari",
+    "role": "Newsletter Editor & Content",
+    "email": "rahul.v@pmi-pcc.org",
+    "portfolioId": "port-marcom",
+    "status": "active",
+    "initials": "RV"
+  },
+  {
+    "id": "per-mcm-4",
+    "name": "Sneha Kulkarni",
+    "role": "Brand & Creative Communications",
+    "email": "sneha.k@pmi-pcc.org",
+    "portfolioId": "port-marcom",
+    "status": "active",
+    "initials": "SK"
+  },
+  {
+    "id": "per-mcm-5",
+    "name": "Harish Kumar",
+    "role": "PR & Media Relations Specialist",
+    "email": "harish.k@pmi-pcc.org",
+    "portfolioId": "port-marcom",
+    "status": "active",
+    "initials": "HK"
+  },
+  {
+    "id": "per-soc-1",
+    "name": "Lata Kalla",
+    "role": "Director Social Impact",
+    "email": "lata.kalla@pmi-pcc.org",
+    "portfolioId": "port-social-impact",
+    "status": "active",
+    "initials": "LK"
+  },
+  {
+    "id": "per-soc-2",
+    "name": "Manoj Prabhakar",
+    "role": "Youth Outreach Lead",
+    "email": "manoj.p@pmi-pcc.org",
+    "portfolioId": "port-social-impact",
+    "status": "active",
+    "initials": "MP"
+  },
+  {
+    "id": "per-soc-3",
+    "name": "Deepa Sundaram",
+    "role": "Community Sustainability Manager",
+    "email": "deepa.s@pmi-pcc.org",
+    "portfolioId": "port-social-impact",
+    "status": "active",
+    "initials": "DS"
+  },
+  {
+    "id": "per-soc-4",
+    "name": "Arvind Swaminathan",
+    "role": "NGO Partnerships Lead",
+    "email": "arvind.s@pmi-pcc.org",
+    "portfolioId": "port-social-impact",
+    "status": "active",
+    "initials": "AS"
+  },
+  {
+    "id": "per-soc-5",
+    "name": "Ritu Agarwal",
+    "role": "Social Impact Projects Lead",
+    "email": "ritu.a@pmi-pcc.org",
+    "portfolioId": "port-social-impact",
+    "status": "active",
+    "initials": "RA"
+  },
+  {
+    "id": "per-acd-1",
+    "name": "Dr. B. Rao",
+    "role": "Director Academia",
+    "email": "b.rao@pmi-pcc.org",
+    "portfolioId": "port-academia",
+    "status": "active",
+    "initials": "BR"
+  },
+  {
+    "id": "per-acd-2",
+    "name": "Prof. Lakshmi Narayana",
+    "role": "University Partnerships Lead",
+    "email": "lakshmi.n@pmi-pcc.org",
+    "portfolioId": "port-academia",
+    "status": "active",
+    "initials": "LN"
+  },
+  {
+    "id": "per-acd-3",
+    "name": "Meenakshi Sundaram",
+    "role": "Student Chapter Advisor",
+    "email": "meenakshi.s@pmi-pcc.org",
+    "portfolioId": "port-academia",
+    "status": "active",
+    "initials": "MS"
+  },
+  {
+    "id": "per-acd-4",
+    "name": "Dr. S. K. Murthy",
+    "role": "Academic Research & Symposium",
+    "email": "sk.murthy@pmi-pcc.org",
+    "portfolioId": "port-academia",
+    "status": "active",
+    "initials": "SKM"
+  },
+  {
+    "id": "per-acd-5",
+    "name": "Tanvi Saxena",
+    "role": "Campus Outreach Coordinator",
+    "email": "tanvi.s@pmi-pcc.org",
+    "portfolioId": "port-academia",
+    "status": "active",
+    "initials": "TS"
+  },
+  {
+    "id": "per-acm-1",
+    "name": "Sreevani Lakkaraju",
+    "role": "Director Academy",
+    "email": "sreevani.l@pmi-pcc.org",
+    "portfolioId": "port-academy",
+    "status": "active",
+    "initials": "SL"
+  },
+  {
+    "id": "per-acm-2",
+    "name": "Venkat Ramanan",
+    "role": "PMP/CAPM Master Trainer",
+    "email": "venkat.r@pmi-pcc.org",
+    "portfolioId": "port-academy",
+    "status": "active",
+    "initials": "VR"
+  },
+  {
+    "id": "per-acm-3",
+    "name": "Pooja Hegde",
+    "role": "Agile & ACP Workshop Lead",
+    "email": "pooja.h@pmi-pcc.org",
+    "portfolioId": "port-academy",
+    "status": "active",
+    "initials": "PH"
+  },
+  {
+    "id": "per-acm-4",
+    "name": "Sudhir Kancharla",
+    "role": "Continuous Education & PDU Manager",
+    "email": "sudhir.k@pmi-pcc.org",
+    "portfolioId": "port-academy",
+    "status": "active",
+    "initials": "SK"
+  },
+  {
+    "id": "per-acm-5",
+    "name": "Neha Choudhary",
+    "role": "Certification Curriculum Specialist",
+    "email": "neha.c@pmi-pcc.org",
+    "portfolioId": "port-academy",
+    "status": "active",
+    "initials": "NC"
+  },
+  {
+    "id": "per-crp-1",
+    "name": "Seshu Ganti",
+    "role": "Director Corporate Outreach",
+    "email": "seshu.ganti@pmi-pcc.org",
+    "portfolioId": "port-corporate",
+    "status": "active",
+    "initials": "SG"
+  },
+  {
+    "id": "per-crp-2",
+    "name": "Vikramaditya Reddy",
+    "role": "Enterprise Sponsorship Lead",
+    "email": "vikram.r@pmi-pcc.org",
+    "portfolioId": "port-corporate",
+    "status": "active",
+    "initials": "VR"
+  },
+  {
+    "id": "per-crp-3",
+    "name": "Archana Iyer",
+    "role": "B2B Strategic Alliances Manager",
+    "email": "archana.i@pmi-pcc.org",
+    "portfolioId": "port-corporate",
+    "status": "active",
+    "initials": "AI"
+  },
+  {
+    "id": "per-crp-4",
+    "name": "Naveen Polishetty",
+    "role": "Corporate Roundtables Lead",
+    "email": "naveen.p@pmi-pcc.org",
+    "portfolioId": "port-corporate",
+    "status": "active",
+    "initials": "NP"
+  },
+  {
+    "id": "per-crp-5",
+    "name": "Sunita Menon",
+    "role": "Industry Engagement Specialist",
+    "email": "sunita.m@pmi-pcc.org",
+    "portfolioId": "port-corporate",
+    "status": "active",
+    "initials": "SM"
+  },
+  {
+    "id": "per-vol-1",
+    "name": "Krishna Chaitanya",
+    "role": "Treasurer & Volunteers Lead",
+    "email": "krishna.c@pmi-pcc.org",
+    "portfolioId": "port-volunteers",
+    "status": "active",
+    "initials": "KC"
+  },
+  {
+    "id": "per-vol-2",
+    "name": "Swathi Ramanathan",
+    "role": "Volunteer Engagement Coordinator",
+    "email": "swathi.r@pmi-pcc.org",
+    "portfolioId": "port-volunteers",
+    "status": "active",
+    "initials": "SR"
+  },
+  {
+    "id": "per-vol-3",
+    "name": "Nitin Gadgil",
+    "role": "Talent Onboarding & Recognition",
+    "email": "nitin.g@pmi-pcc.org",
+    "portfolioId": "port-volunteers",
+    "status": "active",
+    "initials": "NG"
+  },
+  {
+    "id": "per-vol-4",
+    "name": "Divya Teja",
+    "role": "Volunteer Operations Manager",
+    "email": "divya.t@pmi-pcc.org",
+    "portfolioId": "port-volunteers",
+    "status": "active",
+    "initials": "DT"
+  },
+  {
+    "id": "per-vol-5",
+    "name": "Rohit Bhargava",
+    "role": "Volunteer Community Liaison",
+    "email": "rohit.b@pmi-pcc.org",
+    "portfolioId": "port-volunteers",
+    "status": "active",
+    "initials": "RB"
+  },
+  {
+    "id": "per-mbr-1",
+    "name": "Suresh Addepalli",
+    "role": "Director Membership",
+    "email": "suresh.a@pmi-pcc.org",
+    "portfolioId": "port-membership",
+    "status": "active",
+    "initials": "SA"
+  },
+  {
+    "id": "per-mbr-2",
+    "name": "Bhavana Joshi",
+    "role": "Member Onboarding Specialist",
+    "email": "bhavana.j@pmi-pcc.org",
+    "portfolioId": "port-membership",
+    "status": "active",
+    "initials": "BJ"
+  },
+  {
+    "id": "per-mbr-3",
+    "name": "Sandeep Kothari",
+    "role": "Retention & Renewal Manager",
+    "email": "sandeep.k@pmi-pcc.org",
+    "portfolioId": "port-membership",
+    "status": "active",
+    "initials": "SK"
+  },
+  {
+    "id": "per-mbr-4",
+    "name": "Shalini Nambisan",
+    "role": "Member Experience & Networking",
+    "email": "shalini.n@pmi-pcc.org",
+    "portfolioId": "port-membership",
+    "status": "active",
+    "initials": "SN"
+  },
+  {
+    "id": "per-mbr-5",
+    "name": "Tarun Vemula",
+    "role": "Chapter Engagement Liaison",
+    "email": "tarun.v@pmi-pcc.org",
+    "portfolioId": "port-membership",
+    "status": "active",
+    "initials": "TV"
+  },
+  {
+    "id": "per-vzg-1",
+    "name": "Manohar Yerraguntla",
+    "role": "President / Vizag Branch Lead",
+    "email": "manohar.y@pmi-pcc.org",
+    "portfolioId": "port-vizag",
+    "status": "active",
+    "initials": "MY"
+  },
+  {
+    "id": "per-vzg-2",
+    "name": "Prasad Patnaik",
+    "role": "Vizag Regional Coordinator",
+    "email": "prasad.p@pmi-pcc.org",
+    "portfolioId": "port-vizag",
+    "status": "active",
+    "initials": "PP"
+  },
+  {
+    "id": "per-vzg-3",
+    "name": "Sailaja Viswanathan",
+    "role": "Coastal Andhra Events Lead",
+    "email": "sailaja.v@pmi-pcc.org",
+    "portfolioId": "port-vizag",
+    "status": "active",
+    "initials": "SV"
+  },
+  {
+    "id": "per-vzg-4",
+    "name": "Kiran Kumar V",
+    "role": "Vizag Member Networking",
+    "email": "kiran.v@pmi-pcc.org",
+    "portfolioId": "port-vizag",
+    "status": "active",
+    "initials": "KKV"
+  },
+  {
+    "id": "per-vzg-5",
+    "name": "Geetha Madhuri",
+    "role": "Vizag Student Chapter Outreach",
+    "email": "geetha.m@pmi-pcc.org",
+    "portfolioId": "port-vizag",
+    "status": "active",
+    "initials": "GM"
+  }
+]
